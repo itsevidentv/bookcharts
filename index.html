@@ -61,6 +61,7 @@ body {
 .marker-wrapper {
   position: absolute;
   transform: translate(-50%, -50%);
+  transition:all 0.4s ease;
 }
 
 .marker {
@@ -142,7 +143,7 @@ function renderMarkers() {
       const $wrapper = $(`
         <div class="marker-wrapper"
              data-year="${year}"
-             style="top:${marker.position.top}; left:${marker.position.left};">
+             style="top:${marker.position.top}; left:${marker.position.left}; opacity:1; pointer-events:auto;">
           <div class="marker marker-${marker.color}" data-year="${year}"></div>
           <div class="marker-label">${marker.name}</div>
         </div>
@@ -167,12 +168,17 @@ function updateVisibility(changedYear = null) {
     .get();
 
   $(".marker-wrapper").each(function () {
-    this.style.display = activeYears.includes(this.dataset.year)
-      ? "block"
-      : "none";
+    if (activeYears.includes(this.dataset.year)) {
+      this.style.opacity = "1";
+      this.style.pointerEvents = "auto"; // enable hover/focus
+    } else {
+      this.style.opacity = "0";
+      this.style.pointerEvents = "none"; // disable hover/focus
+    }
   });
 }
 
+// Event bindings
 $(document).on("change", "#sidebar input[data-year]", function () {
   updateVisibility(this.dataset.year);
 });
@@ -181,8 +187,8 @@ $(document).on("change", "#solo-mode", function () {
   updateVisibility();
 });
 
+// Initialize markers on page load
 $(document).ready(renderMarkers);
 </script>
-
 </body>
 </html>
