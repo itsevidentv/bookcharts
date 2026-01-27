@@ -44,7 +44,7 @@ body {
   z-index: 20;
   font-family: "Solway", sans-serif;
   text-transform: uppercase;
-  height:150px; overflow:auto;
+  height:100vh; overflow:auto;
   padding-right:5px;
 }
 
@@ -56,12 +56,19 @@ body {
    accent-color:#244237;
 }
 
+#sidebar hr {
+  border: none; 
+  height: 1px; 
+  background-color: #244237;
+  width: 40px; 
+  margin: 10px 0px;
+}
+
 
 /* Marker wrapper */
 .marker-wrapper {
   position: absolute;
   transform: translate(-50%, -50%);
-  transition:all 0.4s ease;
 }
 
 .marker {
@@ -75,7 +82,8 @@ body {
 /* Marker fill */
 .marker-fic { background: #EC9165; }
 .marker-nonfic { background: #6c9d66; }
-.marker-other { background: #4c8493; }
+.marker-poetry { background: #4c8493; }
+.marker-other { background: #df9097; }
 
 
 /* Labels */
@@ -116,11 +124,13 @@ body {
 
 <!-- Sidebar -->
 <div id="sidebar">
-  
-  <label><input type="checkbox" id="solo-mode" checked>single year mode</label><hr>
-  <label><input type="checkbox" data-year="2025"> 2025</label>
+<label><input type="checkbox" id="solo-mode" checked>single year mode</label>
+  <hr>
   <label><input type="checkbox" data-year="2026"> 2026</label>
   <label><input type="checkbox" data-year="2027"> 2027</label>
+  <hr>
+<label><span style="color:#EC9165;">●</span> fiction</label>
+<label><span style="color:#6c9d66;">●</span> nonfiction</label><label><span style="color:#4c8493;">●</span> poetry</label><label><span style="color:#df9097;">●</span> other</label>
 </div>
 
 <!-- Image -->
