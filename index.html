@@ -12,9 +12,13 @@
 <style>
 body {
   margin: 0;
-  font-family: "Solway", serif;
+  font-family: "Rethink Sans", sans-serif;
   font-weight:400;
+  font-size: 12px;
 }
+
+::-webkit-scrollbar { width: 5px; height: 5px; background: rgb(0, 0, 0); border:2px solid white;}
+::-webkit-scrollbar-thumb { background: #244237; width:3px; border:1px solid white; height: auto; }
 
 .image-container {
   position: relative;
@@ -37,18 +41,21 @@ body {
   position: fixed;
   top: 10px;
   left: 10px;
-  background: white;
-  padding: 12px;
   z-index: 20;
-  font-family: "Rethink Sans", sans-serif;
-  font-size: 12px;
+  font-family: "Solway", sans-serif;
   text-transform: uppercase;
+  height:150px; overflow:auto;
+  padding-right:5px;
 }
 
 #sidebar label {
-  display: block;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
+  display:flex;
+   align-items: center;
+   gap:5px;
+   accent-color:#244237;
 }
+
 
 /* Marker wrapper */
 .marker-wrapper {
@@ -69,11 +76,6 @@ body {
 .marker-nonfic { background: #6c9d66; }
 .marker-other { background: #4c8493; }
 
-/* Year rings */
-.marker[data-year="2025"] { outline: 2px solid #6c9d66; }
-.marker[data-year="2026"] { outline: 2px solid #EC9165; }
-.marker[data-year="2027"] { outline: 2px solid #4c8493; }
-.marker { outline-offset: 2px; }
 
 /* Labels */
 .marker-label {
@@ -81,7 +83,6 @@ body {
   left: 15px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 12px;
   white-space: nowrap;
   font-weight: 600;
   opacity: 0;
@@ -89,6 +90,8 @@ body {
   background: white;
   pointer-events: none;
   transition: all 0.3s ease;
+  text-transform:uppercase;
+
 }
 
 .marker-wrapper:hover .marker-label,
@@ -112,11 +115,11 @@ body {
 
 <!-- Sidebar -->
 <div id="sidebar">
+  
+  <label><input type="checkbox" id="solo-mode"> Solo year</label><hr>
   <label><input type="checkbox" data-year="2025"> 2025</label>
   <label><input type="checkbox" data-year="2026" checked> 2026</label>
   <label><input type="checkbox" data-year="2027"> 2027</label>
-  <hr>
-  <label><input type="checkbox" id="solo-mode"> Solo mode</label>
 </div>
 
 <!-- Image -->
