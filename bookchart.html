@@ -1,1 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Book Chart</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+
+  .image-container {
+    position: relative;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .base-image {
+    width: 100%;
+    display: block;
+  }
+
+  #markers-container {
+    position: absolute;
+    inset: 0;
+  }
+
+  /* Marker wrapper */
+  .marker-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  .marker {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+
+  .marker-fic { background: #EC9165; }
+  .marker-nonfic { background: #6c9d66; }
+  .marker-other { background: #4c8493; }
+
+
+  /* Marker label */
+  .marker-label {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    white-space: nowrap;
+ font-family: "Rethink Sans", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  text-transform:uppercase;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    background:white;
+  }
+
+  .marker-wrapper:hover .marker-label,
+  .marker-wrapper:focus-within .marker-label {
+    opacity: 1;
+    visibility: visible;
+    
+  }
+    .marker-wrapper:hover .marker, .marker-wrapper:focus-within .marker {
+    background:#b61219;
+  }
+
+  .marker-wrapper:hover,
+.marker-wrapper:focus-within {
+  z-index: 10;
+}
+</style>
+</head>
+
+<body>
+
+<div class="image-container">
+  <img src="./BOOKCHART.jpg" class="base-image" alt="Map">
+  <div id="markers-container"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./markers.js"></script>
+<script>
+  function renderMarkers() {
+    const container = $("#markers-container");
+    container.empty();
+
+    markers.forEach(marker => {
+      const markerVisual = `<div class="marker marker-${marker.color}"></div>`;
+
+      const $wrapper = $(`
+        <div class="marker-wrapper" tabindex="0"
+             style="top:${marker.position.top}; left:${marker.position.left};">
+          ${markerVisual}
+          <div class="marker-label">${marker.name}</div>
+        </div>
+      `);
+
+      container.append($wrapper);
+    });
+  }
+
+  $(document).ready(renderMarkers);
+</script>
+
+</body>
+</html>
