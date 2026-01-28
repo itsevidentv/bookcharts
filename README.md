@@ -32,6 +32,13 @@ If you want to add a new year, you absolutely can! You'll have to do a few thing
    
 		<label><input type="checkbox" data-year="YYYY"> YYYY</label>
 
+Then look for the script section and add the new year to it (it must come before markers.js):
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  	<script src="./markers/markers-2025.js"></script>
+ 	 <script src="./markers/markers-2026.js"></script>
+	<script src="./markers/markers.js"></script>
+
 -- CUSTOMISING --
 
 If you want to change colours, look for /* Marker fill */ in the index.html file. Change the hex codes:
