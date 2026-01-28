@@ -1,3 +1,3 @@
-const markers2026 = [
+const markers2025 = [
 
 ];
