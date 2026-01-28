@@ -1,4 +1,4 @@
-Hello & welcome to yr very own bookchart!
+Hello & welcome to yr very own bookchart! The webpage updates directly based on whatever changes you make here, hell yeah.
 
 -- EDITING --
 
@@ -40,6 +40,10 @@ If you want to change colours, look for /* Marker fill */ in the index.html file
 		.marker-nonfic { background: #6c9d66; }
 		.marker-poetry { background: #4c8493; }
 		.marker-other { background: #df9097; }
+
+And for the checkbox colour, look for accent-colour:
+
+		accent-color:#244237;
 
 If you want to change the fonts, the two currently used are Solway for the sidebar and Rethink Sans for the book titles. 
 
